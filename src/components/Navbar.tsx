@@ -25,7 +25,7 @@ const Navbar = () => {
       className={cn(
         "fixed top-0 left-0 right-0 z-50 px-6 py-4 transition-all duration-300 ease-in-out",
         isScrolled 
-          ? "bg-white/80 backdrop-blur-lg shadow-sm"
+          ? "bg-white/70 backdrop-blur-md shadow-sm"
           : "bg-transparent"
       )}
     >
@@ -35,20 +35,41 @@ const Navbar = () => {
             <div className="h-10 w-10 rounded-md bg-gov-blue flex items-center justify-center">
               <span className="text-white font-display font-bold text-lg">G</span>
             </div>
-            <span className="font-display font-semibold text-xl">GovSchemes</span>
+            <span className={cn(
+              "font-display font-semibold text-xl transition-colors",
+              isScrolled ? "text-gray-900" : "text-white"
+            )}>GovSchemes</span>
           </div>
           
           <div className="hidden md:flex items-center space-x-8">
-            <a href="#" className="font-medium text-gray-700 hover:text-gov-blue link-animation">Home</a>
-            <a href="#" className="font-medium text-gray-700 hover:text-gov-blue link-animation">Schemes</a>
-            <a href="#" className="font-medium text-gray-700 hover:text-gov-blue link-animation">Eligibility</a>
-            <a href="#" className="font-medium text-gray-700 hover:text-gov-blue link-animation">Resources</a>
-            <a href="#" className="font-medium text-gray-700 hover:text-gov-blue link-animation">Contact</a>
+            <a href="#" className={cn(
+              "font-medium hover:text-gov-blue link-animation",
+              isScrolled ? "text-gray-700" : "text-white"
+            )}>Home</a>
+            <a href="#" className={cn(
+              "font-medium hover:text-gov-blue link-animation",
+              isScrolled ? "text-gray-700" : "text-white"
+            )}>Schemes</a>
+            <a href="#" className={cn(
+              "font-medium hover:text-gov-blue link-animation",
+              isScrolled ? "text-gray-700" : "text-white"
+            )}>Eligibility</a>
+            <a href="#" className={cn(
+              "font-medium hover:text-gov-blue link-animation",
+              isScrolled ? "text-gray-700" : "text-white"
+            )}>Resources</a>
+            <a href="#" className={cn(
+              "font-medium hover:text-gov-blue link-animation",
+              isScrolled ? "text-gray-700" : "text-white"
+            )}>Contact</a>
           </div>
           
           <div className="hidden md:flex items-center space-x-4">
-            <button className="p-2 rounded-full hover:bg-gray-100 transition-colors">
-              <Search className="h-5 w-5 text-gray-700" />
+            <button className={cn(
+              "p-2 rounded-full transition-colors",
+              isScrolled ? "hover:bg-gray-100 text-gray-700" : "hover:bg-white/10 text-white"
+            )}>
+              <Search className="h-5 w-5" />
             </button>
             <Button className="button-animation bg-gov-blue text-white hover:bg-gov-blue/90">
               Log In
@@ -56,13 +77,16 @@ const Navbar = () => {
           </div>
           
           <button 
-            className="md:hidden p-2 rounded-full hover:bg-gray-100 transition-colors"
+            className={cn(
+              "md:hidden p-2 rounded-full transition-colors",
+              isScrolled ? "hover:bg-gray-100 text-gray-700" : "hover:bg-white/10 text-white"
+            )}
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
             {isMobileMenuOpen ? (
-              <X className="h-6 w-6 text-gray-700" />
+              <X className="h-6 w-6" />
             ) : (
-              <Menu className="h-6 w-6 text-gray-700" />
+              <Menu className="h-6 w-6" />
             )}
           </button>
         </div>
