@@ -1,5 +1,5 @@
 
-import { Book, Home, Heart, GraduationCap, Building, Briefcase, Users, Leaf, FileText, Landmark } from 'lucide-react';
+import { Book, Home, Heart, GraduationCap, Building, Briefcase, Users, Leaf, FileText, Landmark, ArrowRight } from 'lucide-react';
 import { SchemeCard } from './SchemeCard';
 
 export const SchemeCategories = () => {
