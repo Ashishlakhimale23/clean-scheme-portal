@@ -1,6 +1,6 @@
 
 import { useState, useEffect } from 'react';
-import { Search, Menu, X } from 'lucide-react';
+import { Menu, X, Sparkle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 
@@ -47,8 +47,8 @@ const Navbar = () => {
           </div>
           
           <div className="hidden md:flex items-center space-x-4">
-            <button className="p-2 rounded-full hover:bg-gray-100 transition-colors">
-              <Search className="h-5 w-5 text-gray-700" />
+            <button className="p-2 rounded-full bg-gov-blue/10 hover:bg-gov-blue/20 transition-colors group">
+              <Sparkle className="h-5 w-5 text-gov-blue group-hover:animate-pulse" />
             </button>
             <Button className="button-animation bg-gov-blue text-white hover:bg-gov-blue/90">
               Log In
