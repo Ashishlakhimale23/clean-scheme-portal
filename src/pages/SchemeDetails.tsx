@@ -1,7 +1,7 @@
 
 import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { ChevronLeft, Calendar, MapPin, Users, Check, ExternalLink, Clock, FileText, AlertCircle, Download } from 'lucide-react';
+import { ChevronLeft, Calendar, MapPin, Users, Check, ExternalLink, Clock, FileText, AlertCircle, Download, Info } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { Button } from '@/components/ui/button';
