@@ -5,6 +5,7 @@ import { SchemeCard } from './SchemeCard';
 export const SchemeCategories = () => {
   const schemes = [
     {
+      id: "pm-kisan-samman-nidhi",
       title: "PM Kisan Samman Nidhi",
       category: "Agriculture",
       eligibility: "Small and marginal farmers with landholding up to 2 hectares",
@@ -14,6 +15,7 @@ export const SchemeCategories = () => {
       delay: 100
     },
     {
+      id: "national-education-scholarship",
       title: "National Education Scholarship",
       category: "Education",
       eligibility: "Students from economically weaker sections with annual family income less than ₹2.5 lakh",
@@ -23,6 +25,7 @@ export const SchemeCategories = () => {
       delay: 200
     },
     {
+      id: "pm-awas-yojana",
       title: "PM Awas Yojana",
       category: "Housing",
       eligibility: "Houseless people and those living in kutcha/dilapidated houses",
@@ -32,6 +35,7 @@ export const SchemeCategories = () => {
       delay: 300
     },
     {
+      id: "ayushman-bharat",
       title: "Ayushman Bharat",
       category: "Healthcare",
       eligibility: "Poor and vulnerable families as per SECC database",
@@ -41,6 +45,7 @@ export const SchemeCategories = () => {
       delay: 400
     },
     {
+      id: "startup-india-seed-fund",
       title: "Startup India Seed Fund",
       category: "Entrepreneurship",
       eligibility: "Early stage startups with innovative ideas and scalable business models",
@@ -50,6 +55,7 @@ export const SchemeCategories = () => {
       delay: 500
     },
     {
+      id: "digital-india-skill-development",
       title: "Digital India Skill Development",
       category: "Skill Development",
       eligibility: "Unemployed youth between 18-35 years",

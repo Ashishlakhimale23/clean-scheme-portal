@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { Menu, X, Sparkle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -31,28 +32,35 @@ const Navbar = () => {
     >
       <div className="container mx-auto">
         <div className="flex items-center justify-between">
-          <div className="flex items-center space-x-2">
+          <Link to="/" className="flex items-center space-x-2">
             <div className="h-10 w-10 rounded-md bg-gov-blue flex items-center justify-center">
               <span className="text-white font-display font-bold text-lg">G</span>
             </div>
             <span className="font-display font-semibold text-xl">GovSchemes</span>
-          </div>
+          </Link>
           
           <div className="hidden md:flex items-center space-x-8">
-            <a href="#" className="font-medium text-gray-700 hover:text-gov-blue link-animation">Home</a>
-            <a href="#" className="font-medium text-gray-700 hover:text-gov-blue link-animation">Schemes</a>
-            <a href="#" className="font-medium text-gray-700 hover:text-gov-blue link-animation">Eligibility</a>
-            <a href="#" className="font-medium text-gray-700 hover:text-gov-blue link-animation">Resources</a>
-            <a href="#" className="font-medium text-gray-700 hover:text-gov-blue link-animation">Contact</a>
+            <Link to="/" className="font-medium text-gray-700 hover:text-gov-blue link-animation">Home</Link>
+            <Link to="/schemes" className="font-medium text-gray-700 hover:text-gov-blue link-animation">Schemes</Link>
+            <Link to="/eligibility" className="font-medium text-gray-700 hover:text-gov-blue link-animation">Eligibility</Link>
+            <Link to="/resources" className="font-medium text-gray-700 hover:text-gov-blue link-animation">Resources</Link>
+            <Link to="/contact" className="font-medium text-gray-700 hover:text-gov-blue link-animation">Contact</Link>
           </div>
           
           <div className="hidden md:flex items-center space-x-4">
             <button className="p-2 rounded-full bg-gov-blue/10 hover:bg-gov-blue/20 transition-colors group">
               <Sparkle className="h-5 w-5 text-gov-blue group-hover:animate-pulse" />
             </button>
-            <Button className="button-animation bg-gov-blue text-white hover:bg-gov-blue/90">
-              Log In
-            </Button>
+            <Link to="/login">
+              <Button variant="outline" className="border-gray-200 hover:border-gray-300 hover:bg-gray-50">
+                Log In
+              </Button>
+            </Link>
+            <Link to="/signup">
+              <Button className="button-animation bg-gov-blue text-white hover:bg-gov-blue/90">
+                Sign Up
+              </Button>
+            </Link>
           </div>
           
           <button 
@@ -71,14 +79,17 @@ const Navbar = () => {
         {isMobileMenuOpen && (
           <div className="md:hidden absolute top-full left-0 right-0 bg-white shadow-lg rounded-b-2xl mt-1 p-5 animate-slide-up">
             <div className="flex flex-col space-y-4">
-              <a href="#" className="font-medium text-gray-700 hover:text-gov-blue px-2 py-2 rounded-md hover:bg-gray-50 transition-colors">Home</a>
-              <a href="#" className="font-medium text-gray-700 hover:text-gov-blue px-2 py-2 rounded-md hover:bg-gray-50 transition-colors">Schemes</a>
-              <a href="#" className="font-medium text-gray-700 hover:text-gov-blue px-2 py-2 rounded-md hover:bg-gray-50 transition-colors">Eligibility</a>
-              <a href="#" className="font-medium text-gray-700 hover:text-gov-blue px-2 py-2 rounded-md hover:bg-gray-50 transition-colors">Resources</a>
-              <a href="#" className="font-medium text-gray-700 hover:text-gov-blue px-2 py-2 rounded-md hover:bg-gray-50 transition-colors">Contact</a>
-              <Button className="w-full button-animation bg-gov-blue text-white hover:bg-gov-blue/90">
-                Log In
-              </Button>
+              <Link to="/" className="font-medium text-gray-700 hover:text-gov-blue px-2 py-2 rounded-md hover:bg-gray-50 transition-colors">Home</Link>
+              <Link to="/schemes" className="font-medium text-gray-700 hover:text-gov-blue px-2 py-2 rounded-md hover:bg-gray-50 transition-colors">Schemes</Link>
+              <Link to="/eligibility" className="font-medium text-gray-700 hover:text-gov-blue px-2 py-2 rounded-md hover:bg-gray-50 transition-colors">Eligibility</Link>
+              <Link to="/resources" className="font-medium text-gray-700 hover:text-gov-blue px-2 py-2 rounded-md hover:bg-gray-50 transition-colors">Resources</Link>
+              <Link to="/contact" className="font-medium text-gray-700 hover:text-gov-blue px-2 py-2 rounded-md hover:bg-gray-50 transition-colors">Contact</Link>
+              <Link to="/login" className="font-medium text-gray-700 hover:text-gov-blue px-2 py-2 rounded-md hover:bg-gray-50 transition-colors">Log In</Link>
+              <Link to="/signup">
+                <Button className="w-full button-animation bg-gov-blue text-white hover:bg-gov-blue/90">
+                  Sign Up
+                </Button>
+              </Link>
             </div>
           </div>
         )}

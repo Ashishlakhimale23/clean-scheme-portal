@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import { ArrowRight, ChevronRight } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { Link } from 'react-router-dom';
 
 interface SchemeCardProps {
   title: string;
@@ -11,6 +12,7 @@ interface SchemeCardProps {
   icon: React.ReactNode;
   color: string;
   delay: number;
+  id?: string;
 }
 
 export const SchemeCard = ({ 
@@ -20,9 +22,13 @@ export const SchemeCard = ({
   benefit,
   icon,
   color,
-  delay
+  delay,
+  id
 }: SchemeCardProps) => {
   const [isHovered, setIsHovered] = useState(false);
+  
+  // Generate an ID from the title if not provided
+  const schemeId = id || title.toLowerCase().replace(/\s+/g, '-');
   
   return (
     <div 
@@ -85,7 +91,8 @@ export const SchemeCard = ({
         
         {/* Action button */}
         <div className="mt-auto">
-          <button 
+          <Link 
+            to={`/scheme/${schemeId}`}
             className={`
               group flex items-center text-sm font-medium
               transition-all duration-300 ease-out
@@ -99,7 +106,7 @@ export const SchemeCard = ({
                 ${isHovered ? 'translate-x-1' : ''}
               `} 
             />
-          </button>
+          </Link>
         </div>
       </div>
     </div>
