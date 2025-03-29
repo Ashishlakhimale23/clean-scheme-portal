@@ -1,62 +1,88 @@
 
 import { Link, useLocation } from 'react-router-dom';
-import { 
-  Home, User, FileText, Bell, BarChart2, Settings, HelpCircle, LogOut 
-} from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { 
+  User, 
+  Home, 
+  Search, 
+  BookMarked,
+  Bell, 
+  Settings, 
+  LogOut
+} from 'lucide-react';
 
 const DashboardSidebar = () => {
   const location = useLocation();
   
   const menuItems = [
-    { icon: Home, label: 'Dashboard', path: '/dashboard' },
-    { icon: User, label: 'My Profile', path: '/profile' },
-    { icon: FileText, label: 'My Applications', path: '/applications' },
-    { icon: Bell, label: 'Notifications', path: '/notifications' },
-    { icon: BarChart2, label: 'Reports', path: '/reports' },
-    { icon: Settings, label: 'Settings', path: '/settings' },
-    { icon: HelpCircle, label: 'Help & Support', path: '/support' },
+    {
+      name: 'Dashboard',
+      icon: <Home className="h-5 w-5" />,
+      href: '/dashboard',
+    },
+    {
+      name: 'Browse Schemes',
+      icon: <Search className="h-5 w-5" />,
+      href: '/schemes',
+    },
+    {
+      name: 'Profile',
+      icon: <User className="h-5 w-5" />,
+      href: '/profile',
+    },
+    {
+      name: 'Notifications',
+      icon: <Bell className="h-5 w-5" />,
+      href: '/notifications',
+    },
+    {
+      name: 'Settings',
+      icon: <Settings className="h-5 w-5" />,
+      href: '/settings',
+    },
   ];
   
   return (
-    <div className="w-full lg:w-64 bg-white rounded-xl shadow-sm border border-gray-100 p-4 h-auto lg:sticky lg:top-28">
-      <div className="flex items-center p-2 mb-6">
-        <div className="h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center">
-          <User className="h-5 w-5 text-gov-blue" />
+    <div className="w-full lg:w-64 lg:min-h-[calc(100vh-80px)] bg-white rounded-lg border border-gray-100 overflow-hidden shadow-sm">
+      <div className="p-6">
+        <div className="flex items-center mb-6">
+          <div className="relative w-10 h-10 rounded-full bg-gov-lightBlue text-white flex items-center justify-center font-bold text-lg mr-3">
+            A
+          </div>
+          <div>
+            <h3 className="font-medium">Anuj Kumar</h3>
+            <p className="text-xs text-gray-500">anuj@example.com</p>
+          </div>
         </div>
-        <div className="ml-3">
-          <p className="font-medium">Anuj Singh</p>
-          <p className="text-xs text-gray-500">anuj.singh@example.com</p>
-        </div>
-      </div>
-      
-      <nav className="space-y-1">
-        {menuItems.map((item, index) => {
-          const isActive = location.pathname === item.path;
-          return (
-            <Link
-              key={index}
-              to={item.path}
-              className={cn(
-                "flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium transition-colors",
-                isActive
-                  ? "bg-gov-blue text-white"
-                  : "text-gray-700 hover:bg-gray-100"
-              )}
-            >
-              <item.icon className="h-5 w-5" />
-              {item.label}
-            </Link>
-          );
-        })}
         
-        <div className="pt-4 mt-4 border-t border-gray-200">
-          <button className="w-full flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium text-red-600 hover:bg-red-50 transition-colors">
-            <LogOut className="h-5 w-5" />
-            Sign Out
-          </button>
-        </div>
-      </nav>
+        <nav>
+          <ul className="space-y-1">
+            {menuItems.map((item) => (
+              <li key={item.name}>
+                <Link
+                  to={item.href}
+                  className={cn(
+                    "flex items-center gap-3 px-3 py-2 rounded-md text-gray-700 hover:bg-gray-100 transition-colors",
+                    location.pathname === item.href && "bg-blue-50 text-gov-blue font-medium"
+                  )}
+                >
+                  {item.icon}
+                  {item.name}
+                </Link>
+              </li>
+            ))}
+            
+            <li className="pt-4 mt-4 border-t border-gray-100">
+              <button
+                className="flex w-full items-center gap-3 px-3 py-2 rounded-md text-gray-700 hover:bg-gray-100 transition-colors"
+              >
+                <LogOut className="h-5 w-5" />
+                Logout
+              </button>
+            </li>
+          </ul>
+        </nav>
+      </div>
     </div>
   );
 };

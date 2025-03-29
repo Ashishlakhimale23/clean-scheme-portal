@@ -11,8 +11,6 @@ import Dashboard from "./pages/Dashboard";
 import SchemeDetails from "./pages/SchemeDetails";
 import BrowseSchemes from "./pages/BrowseSchemes";
 import NotFound from "./pages/NotFound";
-import Applications from "./pages/Applications";
-import ApplicationDetails from "./pages/ApplicationDetails";
 
 const queryClient = new QueryClient();
 
@@ -29,8 +27,6 @@ const App = () => (
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/scheme/:schemeId" element={<SchemeDetails />} />
           <Route path="/schemes" element={<BrowseSchemes />} />
-          <Route path="/applications" element={<Applications />} />
-          <Route path="/application/:applicationId" element={<ApplicationDetails />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
