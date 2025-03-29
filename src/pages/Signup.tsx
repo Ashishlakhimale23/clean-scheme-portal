@@ -61,7 +61,7 @@ const Signup = () => {
         title: "Success",
         description: "Your account has been created successfully!",
       });
-      navigate('/login');
+      navigate('/dashboard');
     }, 1500);
   };
   

@@ -41,7 +41,7 @@ const Login = () => {
         title: "Success",
         description: "You have successfully logged in!",
       });
-      navigate('/');
+      navigate('/dashboard');
     }, 1500);
   };
   
