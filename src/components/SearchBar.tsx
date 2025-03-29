@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import { Sparkle, Search, Flame, Rocket } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { useNavigate } from 'react-router-dom';
 import { 
   Select,
   SelectContent,
@@ -13,6 +14,16 @@ import {
 export const SearchBar = () => {
   const [isFocused, setIsFocused] = useState(false);
   const [category, setCategory] = useState("");
+  const navigate = useNavigate();
+  
+  const handleExplore = () => {
+    // Navigate to schemes page with the selected category as a query parameter
+    if (category) {
+      navigate(`/schemes?category=${category.toLowerCase()}`);
+    } else {
+      navigate('/schemes');
+    }
+  };
   
   return (
     <div 
@@ -61,7 +72,10 @@ export const SearchBar = () => {
         )}
       </div>
       
-      <button className="ml-2 px-4 py-1.5 bg-gov-lightBlue text-white rounded-full text-sm font-medium transition-colors hover:bg-gov-blue">
+      <button 
+        className="ml-2 px-4 py-1.5 bg-gov-lightBlue text-white rounded-full text-sm font-medium transition-colors hover:bg-gov-blue"
+        onClick={handleExplore}
+      >
         Explore
       </button>
     </div>

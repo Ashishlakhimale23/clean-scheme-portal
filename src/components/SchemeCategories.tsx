@@ -1,6 +1,7 @@
 
 import { Book, Home, Heart, GraduationCap, Building, Briefcase, Users, Leaf, FileText, Landmark, ArrowRight } from 'lucide-react';
 import { SchemeCard } from './SchemeCard';
+import { Link } from 'react-router-dom';
 
 export const SchemeCategories = () => {
   const schemes = [
@@ -78,34 +79,48 @@ export const SchemeCategories = () => {
         
         {/* Category pills */}
         <div className="flex flex-wrap justify-center gap-3 mb-12">
-          <button className="px-5 py-2.5 rounded-full bg-gov-blue text-white flex items-center gap-2 transition-all hover:shadow-md">
-            <Users className="h-4 w-4" />
-            <span>All Schemes</span>
-          </button>
-          <button className="px-5 py-2.5 rounded-full bg-white border border-gray-200 text-gray-800 flex items-center gap-2 transition-all hover:border-gray-300 hover:shadow-sm">
-            <Leaf className="h-4 w-4 text-green-600" />
-            <span>Agriculture</span>
-          </button>
-          <button className="px-5 py-2.5 rounded-full bg-white border border-gray-200 text-gray-800 flex items-center gap-2 transition-all hover:border-gray-300 hover:shadow-sm">
-            <GraduationCap className="h-4 w-4 text-blue-600" />
-            <span>Education</span>
-          </button>
-          <button className="px-5 py-2.5 rounded-full bg-white border border-gray-200 text-gray-800 flex items-center gap-2 transition-all hover:border-gray-300 hover:shadow-sm">
-            <Heart className="h-4 w-4 text-rose-600" />
-            <span>Healthcare</span>
-          </button>
-          <button className="px-5 py-2.5 rounded-full bg-white border border-gray-200 text-gray-800 flex items-center gap-2 transition-all hover:border-gray-300 hover:shadow-sm">
-            <Home className="h-4 w-4 text-orange-600" />
-            <span>Housing</span>
-          </button>
-          <button className="px-5 py-2.5 rounded-full bg-white border border-gray-200 text-gray-800 flex items-center gap-2 transition-all hover:border-gray-300 hover:shadow-sm">
-            <Briefcase className="h-4 w-4 text-purple-600" />
-            <span>Employment</span>
-          </button>
-          <button className="px-5 py-2.5 rounded-full bg-white border border-gray-200 text-gray-800 flex items-center gap-2 transition-all hover:border-gray-300 hover:shadow-sm">
-            <Landmark className="h-4 w-4 text-indigo-600" />
-            <span>Financial</span>
-          </button>
+          <Link to="/schemes">
+            <button className="px-5 py-2.5 rounded-full bg-gov-blue text-white flex items-center gap-2 transition-all hover:shadow-md">
+              <Users className="h-4 w-4" />
+              <span>All Schemes</span>
+            </button>
+          </Link>
+          <Link to="/schemes?category=agriculture">
+            <button className="px-5 py-2.5 rounded-full bg-white border border-gray-200 text-gray-800 flex items-center gap-2 transition-all hover:border-gray-300 hover:shadow-sm">
+              <Leaf className="h-4 w-4 text-green-600" />
+              <span>Agriculture</span>
+            </button>
+          </Link>
+          <Link to="/schemes?category=education">
+            <button className="px-5 py-2.5 rounded-full bg-white border border-gray-200 text-gray-800 flex items-center gap-2 transition-all hover:border-gray-300 hover:shadow-sm">
+              <GraduationCap className="h-4 w-4 text-blue-600" />
+              <span>Education</span>
+            </button>
+          </Link>
+          <Link to="/schemes?category=healthcare">
+            <button className="px-5 py-2.5 rounded-full bg-white border border-gray-200 text-gray-800 flex items-center gap-2 transition-all hover:border-gray-300 hover:shadow-sm">
+              <Heart className="h-4 w-4 text-rose-600" />
+              <span>Healthcare</span>
+            </button>
+          </Link>
+          <Link to="/schemes?category=housing">
+            <button className="px-5 py-2.5 rounded-full bg-white border border-gray-200 text-gray-800 flex items-center gap-2 transition-all hover:border-gray-300 hover:shadow-sm">
+              <Home className="h-4 w-4 text-orange-600" />
+              <span>Housing</span>
+            </button>
+          </Link>
+          <Link to="/schemes?category=employment">
+            <button className="px-5 py-2.5 rounded-full bg-white border border-gray-200 text-gray-800 flex items-center gap-2 transition-all hover:border-gray-300 hover:shadow-sm">
+              <Briefcase className="h-4 w-4 text-purple-600" />
+              <span>Employment</span>
+            </button>
+          </Link>
+          <Link to="/schemes?category=financial">
+            <button className="px-5 py-2.5 rounded-full bg-white border border-gray-200 text-gray-800 flex items-center gap-2 transition-all hover:border-gray-300 hover:shadow-sm">
+              <Landmark className="h-4 w-4 text-indigo-600" />
+              <span>Financial</span>
+            </button>
+          </Link>
         </div>
         
         {/* Schemes grid */}
@@ -117,10 +132,12 @@ export const SchemeCategories = () => {
         
         {/* View more button */}
         <div className="flex justify-center mt-12">
-          <button className="flex items-center gap-2 px-8 py-3 rounded-full bg-white border border-gray-200 text-gray-800 transition-all hover:border-gray-300 hover:shadow-md button-animation">
-            <span>View All Schemes</span>
-            <ArrowRight className="h-4 w-4" />
-          </button>
+          <Link to="/schemes">
+            <button className="flex items-center gap-2 px-8 py-3 rounded-full bg-white border border-gray-200 text-gray-800 transition-all hover:border-gray-300 hover:shadow-md button-animation">
+              <span>View All Schemes</span>
+              <ArrowRight className="h-4 w-4" />
+            </button>
+          </Link>
         </div>
       </div>
     </section>

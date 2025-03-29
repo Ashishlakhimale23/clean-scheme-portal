@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { SearchBar } from './SearchBar';
 import { ArrowDown } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const Hero = () => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -67,9 +68,11 @@ const Hero = () => {
             <Button className="button-animation bg-gov-blue text-white hover:bg-gov-blue/90 px-8 py-6 text-base">
               Check Eligibility
             </Button>
-            <Button className="button-animation bg-white text-gov-darkBlue border border-gray-200 hover:bg-gray-50 px-8 py-6 text-base">
-              Browse All Schemes
-            </Button>
+            <Link to="/schemes">
+              <Button className="button-animation bg-white text-gov-darkBlue border border-gray-200 hover:bg-gray-50 px-8 py-6 text-base">
+                Browse All Schemes
+              </Button>
+            </Link>
           </div>
           
           {/* Stats */}
