@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useToast } from '@/hooks/use-toast';
 import { 
-  Bell, Search, Filter, Star, Clock, CheckCircle2, AlertCircle, User, FileText
+  Bell, Search, Filter, Star, Clock
 } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -21,7 +21,7 @@ import DashboardSidebar from '@/components/DashboardSidebar';
 
 const Dashboard = () => {
   const [isLoaded, setIsLoaded] = useState(false);
-  const [activeTab, setActiveTab] = useState("recommended");
+  const [activeTab, setActiveTab] = useState("saved");
   const { toast } = useToast();
   
   useEffect(() => {
@@ -30,59 +30,10 @@ const Dashboard = () => {
       setIsLoaded(true);
       toast({
         title: "Welcome back!",
-        description: "You have 3 new scheme recommendations",
+        description: "You have 3 saved schemes",
       });
     }, 1000);
   }, [toast]);
-  
-  const recommendedSchemes = [
-    {
-      id: "pm-kisan-samman-nidhi",
-      title: "PM Kisan Samman Nidhi",
-      category: "Agriculture",
-      eligibility: "Small and marginal farmers with landholding up to 2 hectares",
-      benefit: "₹6,000 per year as direct income support in three installments",
-      status: "Eligible",
-      deadline: "December 31, 2023",
-    },
-    {
-      id: "national-pension-scheme",
-      title: "National Pension Scheme",
-      category: "Financial",
-      eligibility: "Indian citizens between 18-65 years",
-      benefit: "Tax benefits and pension after retirement",
-      status: "Eligible",
-      deadline: "Open throughout the year",
-    },
-    {
-      id: "sukanya-samriddhi-yojana",
-      title: "Sukanya Samriddhi Yojana",
-      category: "Financial",
-      eligibility: "Parents of girl child below 10 years",
-      benefit: "8.4% interest rate and tax benefits under section 80C",
-      status: "Eligible",
-      deadline: "Open throughout the year",
-    },
-  ];
-  
-  const appliedSchemes = [
-    {
-      id: "pm-awas-yojana",
-      title: "PM Awas Yojana",
-      category: "Housing",
-      appliedOn: "October 10, 2023",
-      status: "Under Review",
-      lastUpdated: "October 15, 2023",
-    },
-    {
-      id: "ayushman-bharat",
-      title: "Ayushman Bharat",
-      category: "Healthcare",
-      appliedOn: "September 5, 2023",
-      status: "Approved",
-      lastUpdated: "September 20, 2023",
-    },
-  ];
   
   const savedSchemes = [
     {
@@ -125,7 +76,7 @@ const Dashboard = () => {
                 <div>
                   <h1 className="text-2xl font-bold font-display mb-2">Welcome back, Anuj</h1>
                   <p className="text-gray-600">
-                    Here's what's happening with your government schemes
+                    Browse through government schemes you might be interested in
                   </p>
                 </div>
                 <div className="relative">
@@ -137,21 +88,9 @@ const Dashboard = () => {
               </div>
               
               {/* Stats */}
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6">
-                <div className="bg-blue-50 rounded-lg p-4">
-                  <div className="text-blue-600 mb-2 font-semibold">Eligible Schemes</div>
-                  <div className="text-2xl font-bold">12</div>
-                </div>
-                <div className="bg-green-50 rounded-lg p-4">
-                  <div className="text-green-600 mb-2 font-semibold">Applied</div>
-                  <div className="text-2xl font-bold">2</div>
-                </div>
-                <div className="bg-purple-50 rounded-lg p-4">
-                  <div className="text-purple-600 mb-2 font-semibold">Approved</div>
-                  <div className="text-2xl font-bold">1</div>
-                </div>
+              <div className="grid grid-cols-1 md:grid-cols-1 gap-4 mt-6">
                 <div className="bg-amber-50 rounded-lg p-4">
-                  <div className="text-amber-600 mb-2 font-semibold">Saved</div>
+                  <div className="text-amber-600 mb-2 font-semibold">Saved Schemes</div>
                   <div className="text-2xl font-bold">3</div>
                 </div>
               </div>
@@ -188,96 +127,10 @@ const Dashboard = () => {
             </div>
             
             {/* Tabs */}
-            <Tabs defaultValue="recommended" className="w-full" onValueChange={setActiveTab}>
-              <TabsList className="grid grid-cols-3 mb-8">
-                <TabsTrigger value="recommended">Recommended</TabsTrigger>
-                <TabsTrigger value="applied">Applied</TabsTrigger>
-                <TabsTrigger value="saved">Saved</TabsTrigger>
+            <Tabs defaultValue="saved" className="w-full" onValueChange={setActiveTab}>
+              <TabsList className="grid grid-cols-1 mb-8">
+                <TabsTrigger value="saved">Saved Schemes</TabsTrigger>
               </TabsList>
-              
-              <TabsContent value="recommended">
-                <div className="space-y-4">
-                  {recommendedSchemes.map((scheme) => (
-                    <div 
-                      key={scheme.id}
-                      className="bg-white rounded-lg shadow-sm border border-gray-100 p-5 transition-all hover:shadow-md"
-                    >
-                      <div className="flex flex-col md:flex-row md:items-center justify-between">
-                        <div>
-                          <Link to={`/scheme/${scheme.id}`} className="block">
-                            <h3 className="text-lg font-semibold hover:text-gov-blue transition-colors">{scheme.title}</h3>
-                          </Link>
-                          <div className="flex items-center gap-2 mt-1">
-                            <span className="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">
-                              {scheme.category}
-                            </span>
-                            <span className="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded flex items-center gap-1">
-                              <CheckCircle2 className="h-3 w-3" /> {scheme.status}
-                            </span>
-                          </div>
-                          <div className="mt-3 text-sm text-gray-600">
-                            <div className="mb-1"><strong>Eligibility:</strong> {scheme.eligibility}</div>
-                            <div><strong>Benefit:</strong> {scheme.benefit}</div>
-                          </div>
-                        </div>
-                        
-                        <div className="flex items-center gap-3 mt-4 md:mt-0">
-                          <div className="text-sm text-gray-500 flex items-center gap-1">
-                            <Clock className="h-4 w-4" />
-                            <span>Deadline: {scheme.deadline}</span>
-                          </div>
-                          <Link to={`/scheme/${scheme.id}`}>
-                            <Button>Apply Now</Button>
-                          </Link>
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </TabsContent>
-              
-              <TabsContent value="applied">
-                <div className="space-y-4">
-                  {appliedSchemes.map((scheme) => (
-                    <div 
-                      key={scheme.id}
-                      className="bg-white rounded-lg shadow-sm border border-gray-100 p-5 transition-all hover:shadow-md"
-                    >
-                      <div className="flex flex-col md:flex-row md:items-center justify-between">
-                        <div>
-                          <Link to={`/scheme/${scheme.id}`} className="block">
-                            <h3 className="text-lg font-semibold hover:text-gov-blue transition-colors">{scheme.title}</h3>
-                          </Link>
-                          <div className="flex items-center gap-2 mt-1">
-                            <span className="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">
-                              {scheme.category}
-                            </span>
-                            {scheme.status === "Approved" ? (
-                              <span className="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded flex items-center gap-1">
-                                <CheckCircle2 className="h-3 w-3" /> {scheme.status}
-                              </span>
-                            ) : (
-                              <span className="bg-amber-100 text-amber-800 text-xs font-medium px-2.5 py-0.5 rounded flex items-center gap-1">
-                                <Clock className="h-3 w-3" /> {scheme.status}
-                              </span>
-                            )}
-                          </div>
-                          <div className="mt-3 text-sm text-gray-600">
-                            <div className="mb-1"><strong>Applied On:</strong> {scheme.appliedOn}</div>
-                            <div><strong>Last Updated:</strong> {scheme.lastUpdated}</div>
-                          </div>
-                        </div>
-                        
-                        <div className="flex items-center gap-3 mt-4 md:mt-0">
-                          <Link to={`/scheme/${scheme.id}`}>
-                            <Button variant="outline">View Details</Button>
-                          </Link>
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </TabsContent>
               
               <TabsContent value="saved">
                 <div className="space-y-4">
